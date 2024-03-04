@@ -1,0 +1,34 @@
+name: BankWPFAppAppAction
+
+on:
+  push:
+    branches:
+    - main
+    
+jobs:
+  build_and_test:
+
+    env:
+      BUILD_CONFIG: 'Release'
+      SOLUTION: 'BankWPFApp/BankWPFApp.sln'
+      # inserire il percorso del file .sln a partire dalla root del repository
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 8.x
+
+
+    - name: Restore dependencies
+      run: dotnet restore $SOLUTION
+
+    - name: Build
+      run: dotnet build $SOLUTION --configuration $BUILD_CONFIG
+      
+    - name: Test
+      run: dotnet test $SOLUTION --configuration $BUILD_CONFIG

@@ -96,5 +96,11 @@ namespace BankWPFApp
             _balance -= amount;
         }
 
+        public override string ToString()
+        {
+            // DA FARE: Restituisci una rappresentazione testuale dell'oggetto
+            return _accountNumber + " (" + _ownerName + ") - " + _balance.ToString("C") + " " + _accountType;
+        }
     }
 }
+

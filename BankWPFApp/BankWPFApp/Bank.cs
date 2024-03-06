@@ -89,6 +89,8 @@ namespace BankWPFApp
 
         public void ReadAccountsFromCsv(string filePath)
         {
+            _accounts.Clear();
+
             // DA FARE: verifica che il percorso del file non sia nullo o vuoto,
             // altrimenti lancia un'eccezione ArgumentNullException
             if (string.IsNullOrEmpty(filePath))
@@ -148,7 +150,7 @@ namespace BankWPFApp
             // DA FARE: Verifica che il file esista, altrimenti crealo
             if (!File.Exists(filePath))
             {
-                File.Create(filePath);
+                File.Create(filePath).Flush();
             }
 
             // DA FARE: Scrivi i conti correnti su un file CSV

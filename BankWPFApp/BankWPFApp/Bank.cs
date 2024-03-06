@@ -65,15 +65,8 @@ namespace BankWPFApp
         public BankAccount FindAccount(string accountNumber)
         {
             // DA FARE: Cerca un conto corrente per numero di conto
-            // e restituisci l'account corrispondente
-            foreach (BankAccount account in _accounts)
-            {
-                if (account.GetAccountNumber() == accountNumber)
-                {
-                    return account;
-                }
-            }
-            return null;
+            // e restituisci l'account corrispondente oppure null
+
         }
 
         public double GetTotalBalance()
